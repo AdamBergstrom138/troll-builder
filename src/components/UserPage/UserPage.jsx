@@ -9,9 +9,11 @@ function UserPage() {
   const store = useReduxStore();
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+  console.log('user', user);
+  const trolls = useSelector((store) => store.troll);
 
-  const trolls = useSelector(store => store.troll);
-    // FETCH_MOVIES will grab all the Movies and render them to the dom by mapping
+  console.log('client trolls:' , trolls);
+
     useEffect(() => {
         dispatch({ type: 'FETCH_TROLLS' });
     }, []);
@@ -22,18 +24,46 @@ function UserPage() {
       <p>Your ID is: {user.id}</p>
       <LogOutButton className="btn" />
       <h1>Trolls</h1>
-      <section className="trolls">
-                {trolls.map(troll => {
+      {/* <table className="simpleTable">
+              <thead>
+                <tr>
+                  <th>name</th>
+                  <th>description</th>
+                </tr>
+              </thead>
+              <tbody>
+                {trolls.map((troll, index) => (
+                  <tr key={index}>
+                    <td>{troll.name}</td>
+                    <td>{troll.description}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table> */}
+            <section className="trolls">
+                {trolls.map((troll) => {
                     return (
-                        <div  key={troll.id} >
+                        <div className='trollBox' key={troll.id} >
                             <h3>{troll.name}</h3>
                         </div>
                     );
                 })}
             </section>
-    </div>
+          </div>
+
   );
 }
 
 // this allows us to use <App /> in index.js
 export default UserPage;
+
+      {/* <section className="trolls">
+                {trolls.map(troll => {
+                    return (
+                        <div  key={troll.id} >
+                            <h3>{troll.name}</h3>
+                            <h4>{troll.description}</h4>
+                        </div>
+                    );
+                })}
+            </section> */}
