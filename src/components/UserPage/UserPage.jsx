@@ -17,6 +17,15 @@ function UserPage() {
     useEffect(() => {
         dispatch({ type: 'FETCH_TROLLS' });
     }, []);
+
+    const handleClick = (data) => {
+      
+      console.log('troll clicked', data);
+      let troll = data.id;
+
+      // history.push(`/details/${movieId}`)
+}
+
   return (
     <div className="container">
       <h1>Troll Builder User Page</h1>
@@ -24,27 +33,12 @@ function UserPage() {
       <p>Your ID is: {user.id}</p>
       <LogOutButton className="btn" />
       <h1>Trolls</h1>
-      {/* <table className="simpleTable">
-              <thead>
-                <tr>
-                  <th>name</th>
-                  <th>description</th>
-                </tr>
-              </thead>
-              <tbody>
-                {trolls.map((troll, index) => (
-                  <tr key={index}>
-                    <td>{troll.name}</td>
-                    <td>{troll.description}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table> */}
             <section className="trolls">
                 {trolls.map((troll) => {
                     return (
                         <div className='trollBox' key={troll.id} >
                             <h3>{troll.name}</h3>
+                            <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/>
                         </div>
                     );
                 })}
@@ -57,13 +51,3 @@ function UserPage() {
 // this allows us to use <App /> in index.js
 export default UserPage;
 
-      {/* <section className="trolls">
-                {trolls.map(troll => {
-                    return (
-                        <div  key={troll.id} >
-                            <h3>{troll.name}</h3>
-                            <h4>{troll.description}</h4>
-                        </div>
-                    );
-                })}
-            </section> */}

@@ -6,14 +6,10 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 router.get('/', rejectUnauthenticated, (req, res) => {
     let id = req.user.id;
-    // what is the value of req.user????
     console.log('req.user:', req.user, 'req.user.id:', req.user.id);
-    // if(req.user.clearance_level < 3 ){
-    //   console.log('you got it adam!');
-    // }
-  
+
     const sqlQuery =`
-    SELECT "name", "description", "created", "element", "head", "body", "image", "username"
+    SELECT "name", "description", "created", "element", "head", "body", "image", "username", "image"
     FROM "troll"
     JOIN "user"
     ON "user"."id" = "troll"."user_id"
