@@ -11,7 +11,8 @@ function TrollDetails() {
     const trollDetails = useSelector(store => store.trollDetails)
 
     console.log("Troll details in Details:", trollDetails);
-    // FETCH_MOVIEDETAILS grabs the info for one movie based on the ID we clicked on
+    // FETCH_TROLLDETAILS grabs the info for one Troll based on the ID we clicked on
+    // TODO GET Likes
     useEffect(() => {
         const trollId = params.id;
         console.log('trollId', trollId);
@@ -29,7 +30,6 @@ function TrollDetails() {
     return (
         <main>
             <h1>Details</h1>
-            <h1>{trollDetails.name}</h1>
             <div>
             {trollDetails.map((troll, index) => {
                 return (
@@ -38,8 +38,8 @@ function TrollDetails() {
                         <img src={troll.image}/>
                         <h3>Description: {troll.description}</h3>
                         <h4>Born: {troll.created}</h4> 
-                        <h5>Element: {troll.element}</h5>
-                        
+                        <h4>Element: {troll.element}</h4>
+                        <h4>likes component goes here</h4>
                     </div>
                 )
             })}
