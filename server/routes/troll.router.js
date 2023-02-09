@@ -3,7 +3,31 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+router.get('/all', rejectUnauthenticated, (req, res) => {
+  // let id = req.user.id;
+  // console.log('req.user:', req.user, 'req.user.id:', req.user.id);
+  console.log('in get all');
+  const sqlQuery =`
+  SELECT *
+  FROM "troll"
+  JOIN "user"
+  ON "user"."id" = "troll"."user_id"
+  ORDER BY "created" DESC;
+  `
 
+  // const sqlValues = [id];
+
+  pool.query(sqlQuery)
+
+    .then((results) => res.send(results.rows))
+    .catch((error) => {
+      console.log('Error making GET ALL for troll:', error);
+      res.sendStatus(500);
+    });
+});
+
+
+// This get route is to get for an individual user!
 router.get('/', rejectUnauthenticated, (req, res) => {
     let id = req.user.id;
     console.log('req.user:', req.user, 'req.user.id:', req.user.id);

@@ -13,6 +13,18 @@ function* fetchTrolls() {
   }
 }
 
+function* fetchAllTrolls() {
+  try {
+    const trolls = yield axios.get('/api/troll/all');
+    console.log('get all:', trolls.data);
+    yield put({ type: 'SET_ALL_TROLL', payload: trolls.data });
+    console.log('troll.saga:', trolls.data);
+  } catch (error) {
+    console.log('Troll get request failed', error);
+  }
+}
+
+
 function* fetchTrollDetails(action) {
   console.log('in fetchTrollDetails', action.payload);
   try {
@@ -50,6 +62,7 @@ function* addLike(action) {
 
 function* trollSaga() {
   yield takeLatest('FETCH_TROLLS', fetchTrolls)
+  yield takeLatest('FETCH_ALL_TROLLS', fetchAllTrolls)
   yield takeLatest('FETCH_TROLLDETAILS', fetchTrollDetails)
   yield takeLatest('ADD_LIKE', addLike)
 }
