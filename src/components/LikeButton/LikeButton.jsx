@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 
 function LikeButton ({ troll }) {
+    const dispatch = useDispatch();
+    const params = useParams();
+
     const handleLike = (event) => {
         event.preventDefault();
+        const trollId = params.id;
+        // console.log('trollId', trollId)
         console.log('clicked like', troll.troll_id);
-        // dispatch({ 
-        //     type: 'ADD_LIKE',
-        //     payload: troll.troll_id
-        // });
+        dispatch({ 
+            type: 'ADD_LIKE',
+            payload: trollId
+        });
     }
     
     // const putLike = ({troll}) => {

@@ -6,9 +6,6 @@ function* fetchTrolls() {
   try {
     const trolls = yield axios.get('/api/troll');
     console.log('get all:', trolls.data);
-
-    //const response = yield axios.get('/api/troll', config);
-
     yield put({ type: 'SET_TROLL', payload: trolls.data });
     console.log('troll.saga:', trolls.data);
   } catch (error) {
@@ -36,9 +33,25 @@ function* fetchTrollDetails(action) {
       
 }
 
+function* addLike(action) {
+  console.log('addLike action.payload:', action.payload)
+  const id = action.payload;
+  yield axios({
+      method: 'PUT',
+      url: `/api/troll/${id}`,
+      data: id
+    })
+    yield put({
+      type: 'FETCH_TROLLDETAILS',
+      payload: id
+    })
+  } 
+
+
 function* trollSaga() {
   yield takeLatest('FETCH_TROLLS', fetchTrolls)
   yield takeLatest('FETCH_TROLLDETAILS', fetchTrollDetails)
+  yield takeLatest('ADD_LIKE', addLike)
 }
 
 export default trollSaga;

@@ -1,4 +1,4 @@
-const troll = (state = 0, action) => {
+const troll = (state = [], action) => {
     switch (action.type) {
         case 'SET_TROLL':
             return action.payload;
