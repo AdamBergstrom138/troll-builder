@@ -37,7 +37,7 @@ function* fetchTrollDetails(action) {
 }
 
 function* trollSaga() {
-  yield takeLatest('FETCH_TROLLS', fetchTrolls);
+  yield takeLatest('FETCH_TROLLS', fetchTrolls)
   yield takeLatest('FETCH_TROLLDETAILS', fetchTrollDetails)
 }
 

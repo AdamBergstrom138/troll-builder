@@ -39,7 +39,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   // TODO join and add likes
 router.get('/:id', (req, res) => {
   const queryText = `
-  SELECT "name", "description", "created", "element", "head", "body", "image", "username"
+  SELECT "troll_id", "name", "description", "created", "element", "head", "body", "image", "username"
   FROM "troll"
   JOIN "user"
   ON "user"."id" = "troll"."user_id"

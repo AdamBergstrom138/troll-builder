@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import LikeButton from '../LikeButton/LikeButton';
 
 
 function TrollDetails() {
@@ -20,6 +21,11 @@ function TrollDetails() {
             type: 'FETCH_TROLLDETAILS',
             payload: trollId
         });
+        dispatch({ 
+            type: 'FETCH_LIKES',
+            payload: trollId
+        });
+        
     }, []);
     // back button
     const handleBackClick = () => {
@@ -39,7 +45,7 @@ function TrollDetails() {
                         <h3>Description: {troll.description}</h3>
                         <h4>Born: {troll.created}</h4> 
                         <h4>Element: {troll.element}</h4>
-                        <h4>likes component goes here</h4>
+                        <p><LikeButton troll={troll} /></p>
                     </div>
                 )
             })}
