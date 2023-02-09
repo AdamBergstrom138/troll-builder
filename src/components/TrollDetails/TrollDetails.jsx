@@ -10,6 +10,7 @@ function TrollDetails() {
     const history = useHistory();
     const params = useParams();
     const trollDetails = useSelector(store => store.trollDetails)
+    // const likes = useSelector(store => store.likes)
 
     console.log("Troll details in Details:", trollDetails);
     // FETCH_TROLLDETAILS grabs the info for one Troll based on the ID we clicked on
@@ -21,10 +22,11 @@ function TrollDetails() {
             type: 'FETCH_TROLLDETAILS',
             payload: trollId
         });
-        dispatch({ 
-            type: 'FETCH_LIKES',
-            payload: trollId
-        });
+        // dispatch({ 
+        //     type: 'FETCH_LIKES',
+        //     payload: trollId
+        // });
+
         
     }, []);
     // back button
@@ -45,7 +47,7 @@ function TrollDetails() {
                         <h3>Description: {troll.description}</h3>
                         <h4>Born: {troll.created}</h4> 
                         <h4>Element: {troll.element}</h4>
-                        <p><LikeButton troll={troll} /></p>
+                        <div><LikeButton troll={troll}/></div>
                     </div>
                 )
             })}

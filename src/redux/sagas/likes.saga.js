@@ -13,7 +13,7 @@ function* fetchLikes(action) {
           type: 'SET_LIKES',
           payload: likes.data
         }) 
-        console.log('fetchLikes', likes);
+        console.log('FetchLikes in likes.saga', likes);
     } catch(error){   // add error and log it
         console.log('fetch Troll Details error', error);
     }

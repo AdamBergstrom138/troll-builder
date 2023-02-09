@@ -5,7 +5,10 @@ function LikeButton ({ troll }) {
     const handleLike = (event) => {
         event.preventDefault();
         console.log('clicked like', troll.troll_id);
-        putLike({troll});
+        // dispatch({ 
+        //     type: 'ADD_LIKE',
+        //     payload: troll.troll_id
+        // });
     }
     
     // const putLike = ({troll}) => {
@@ -21,23 +24,23 @@ function LikeButton ({ troll }) {
     //     })
     // }
     
-    const putLike = ({troll}) => {
-        console.log('you liked troll', troll);
-        // console.log(troll.likes);
-        // axios.put(`/trolls/like/${troll.id}`,
-        // {
-        //     id: troll.id,
-        //     likes: troll.likes
-        // }
-        // )
-        // .then(response => {
-        //     console.log(response);
-        //     fetchTrolls();
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // })
-    }
+    // const putLike = ({troll}) => {
+    //     console.log('you liked troll', troll, 'troll likes', troll.likes);
+
+    //     axios.put(`/trolls/like/${troll.id}`,
+    //     {
+    //         id: troll.id,
+    //         likes: troll.likes
+    //     }
+    //     )
+    //     .then(response => {
+    //         console.log(response);
+    //         fetchTrolls();
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     })
+    // }
 
     // henris code
     // router.put('/:id', (req,res) => {
@@ -62,10 +65,22 @@ function LikeButton ({ troll }) {
     // })
 
     return ( 
+  <>
         <button type="button" onClick={handleLike}>
             Like
         </button>
-        )
-    }
-    
+         <div>
+            <p>likes: {troll.likes}</p>
+         {/* {likes.map((like, index) => {
+             return (
+                 <div className='likesBox' key={index}>
+                     <h2>Likes: {}</h2> 
+
+                 </div>
+             )
+         })} */}
+         </div>
+         </>
+  )
+}
     export default LikeButton;

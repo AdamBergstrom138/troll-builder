@@ -39,7 +39,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   // TODO join and add likes
 router.get('/:id', (req, res) => {
   const queryText = `
-  SELECT "troll_id", "name", "description", "created", "element", "head", "body", "image", "username"
+  SELECT "troll_id", "name", "description", "created", "element", "head", "body", "image", "username", "likes"
   FROM "troll"
   JOIN "user"
   ON "user"."id" = "troll"."user_id"
@@ -52,5 +52,31 @@ router.get('/:id', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+// PUT route for likes
+
+// router.put('/', (req, res) => {
+//   const updatedPlant = req.body;
+
+//   const queryText = `
+//   UPDATE troll
+//   SET "likes" = "likes" + 1 
+//   WHERE "troll_id"=$1;
+//   `;
+
+//   const queryValues = [
+//     updatedPlant.name,
+
+//   ];
+
+//   pool.query(queryText, queryValues)
+//     .then(() => { res.sendStatus(200); })
+//     .catch((err) => {
+//       console.log('Error completing SELECT plant query', err);
+//       res.sendStatus(500);
+//     });
+// });
+
+
   module.exports = router;
   
