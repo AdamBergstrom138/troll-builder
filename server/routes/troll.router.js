@@ -3,6 +3,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+// This get route is to get all the trolls of all users
 router.get('/all', rejectUnauthenticated, (req, res) => {
   // let id = req.user.id;
   // console.log('req.user:', req.user, 'req.user.id:', req.user.id);
@@ -14,11 +15,8 @@ router.get('/all', rejectUnauthenticated, (req, res) => {
   ON "user"."id" = "troll"."user_id"
   ORDER BY "created" DESC;
   `
-
   // const sqlValues = [id];
-
   pool.query(sqlQuery)
-
     .then((results) => res.send(results.rows))
     .catch((error) => {
       console.log('Error making GET ALL for troll:', error);
@@ -26,12 +24,10 @@ router.get('/all', rejectUnauthenticated, (req, res) => {
     });
 });
 
-
-// This get route is to get for an individual user!
+// This get route is to get all trolls for an individual user!
 router.get('/', rejectUnauthenticated, (req, res) => {
     let id = req.user.id;
     console.log('req.user:', req.user, 'req.user.id:', req.user.id);
-
     const sqlQuery =`
     SELECT "troll_id", "name", "description", "created", "element", "head", "body", "image", "username"
     FROM "troll"
@@ -39,18 +35,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     ON "user"."id" = "troll"."user_id"
     WHERE "user"."id"= $1;
     `
-  
     const sqlValues = [id];
-  
     pool.query(sqlQuery, sqlValues)
-  
-    // pool
-      // .query(`SELECT * FROM "secret"
-      // WHERE "clearance_level"=$1
-      // ORDER BY "id";`)
-  
-      // const sqlValues = [currentUserId];
-  
       .then((results) => res.send(results.rows))
       .catch((error) => {
         console.log('Error making GET for troll:', error);
@@ -59,8 +45,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
   });
 
 
-  // GET route for JUST ONE Troll:
- 
+  // GET route for JUST ONE Troll based on that trolls id
 router.get('/:id', (req, res) => {
   const queryText = `
   SELECT "troll_id", "name", "description", "created", "element", "head", "body", "image", "username", "likes"
@@ -77,22 +62,19 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// PUT route for likes
-
+// PUT route for likes based on troll id
 router.put('/:id', (req, res) => {
   // const updatedID = req.body;
   id = req.params.id
-  console.log('******************',id);
+  console.log('in LIKE PUT router', id);
   const queryText = `
   UPDATE troll
   SET "likes" = "likes" + 1 
   WHERE "troll_id"=$1;
   `;
-
   const queryValues = [
     id
   ];
-
   pool.query(queryText, queryValues)
     .then(() => { res.sendStatus(200); })
     .catch((err) => {
@@ -101,6 +83,28 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// POST Route to create a troll
+router.post('/', (req, res) => {
+  const newTroll = req.body;
+  console.log('newTroll', newTroll);
+  const queryText = `
+  INSERT INTO "troll" ("name", "description", "element", "head", "body", "accessory", "background", "user_id", "image", "likes")
+  VALUES 
+    ($1, $2, 'fire', 'head2', 'body2', 'none', 'none', $3, 'imgs/test2.png', '0');
+  
+    `;
+  const queryValues = [
+    newTroll.name,
+    newTroll.description,
+    Number(newTroll.userid)
+  ];
+  pool.query(queryText, queryValues)
+    .then(() => { res.sendStatus(201); })
+    .catch((err) => {
+      console.log('Error completing POST new Troll query', err);
+      res.sendStatus(500);
+    });
+});
 
   module.exports = router;
   

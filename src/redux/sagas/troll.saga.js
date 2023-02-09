@@ -59,11 +59,37 @@ function* addLike(action) {
     })
   } 
 
+  function* addTroll(action) {
+    console.log('addTroll action.payload:', action.payload)
+    // Send the new plant (action.payload) to our server
+    // (POST /api/plant)
+    try {
+      const newTroll = action.payload // 👈 this variable will evaluate to
+                                      // something like:
+                                      // { name: 'Thing', kingdom: 'Other Thing', ...}
+      // POST the new plant object to the server:
+      const response = yield axios({
+        method: 'POST',
+        url: '/api/troll',
+        data: newTroll
+      })
+      
+      // Now that we've successfully added a plant to the plants table,
+      // we call the fetchPlants Saga function to bring our plantList reducer
+      // back in sync with our plants table:
+      yield put({
+        type: 'FETCH_TROLLS'
+      })
+    } catch (error) {
+      console.log('addTroll fail:', error)
+    }
+  }
 
 function* trollSaga() {
   yield takeLatest('FETCH_TROLLS', fetchTrolls)
   yield takeLatest('FETCH_ALL_TROLLS', fetchAllTrolls)
   yield takeLatest('FETCH_TROLLDETAILS', fetchTrollDetails)
+  yield takeLatest('ADD_TROLL', addTroll)
   yield takeLatest('ADD_LIKE', addLike)
 }
 
