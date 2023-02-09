@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import LikeButton from '../LikeButton/LikeButton';
+import DeleteButton from '../DeleteButton/DeleteButton';
 
 
 function TrollDetails() {
@@ -47,7 +48,8 @@ function TrollDetails() {
                         <h3>Description: {troll.description}</h3>
                         <h4>Born: {troll.created}</h4> 
                         <h4>Element: {troll.element}</h4>
-                        <div><LikeButton troll={troll}/></div>
+                        <div><LikeButton troll={troll} /></div>
+                        <div><DeleteButton troll={troll} /></div>
                     </div>
                 )
             })}

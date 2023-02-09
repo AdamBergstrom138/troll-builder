@@ -85,12 +85,25 @@ function* addLike(action) {
     }
   }
 
+  function* deleteTroll(action) {
+    try {
+      yield axios.delete(`/api/troll/${action.payload}`)
+      yield put ({ type: 'FETCH_TROLLS'});
+  
+    }
+    catch (error) {
+      console.log('Error in deleteTroll:', error)
+    }
+  }
+  
+
 function* trollSaga() {
   yield takeLatest('FETCH_TROLLS', fetchTrolls)
   yield takeLatest('FETCH_ALL_TROLLS', fetchAllTrolls)
   yield takeLatest('FETCH_TROLLDETAILS', fetchTrollDetails)
   yield takeLatest('ADD_TROLL', addTroll)
   yield takeLatest('ADD_LIKE', addLike)
+  yield takeLatest('DELETE_TROLL', deleteTroll)
 }
 
 export default trollSaga;

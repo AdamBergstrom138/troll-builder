@@ -106,5 +106,27 @@ router.post('/', (req, res) => {
     });
 });
 
+// DELETE Route to delete a troll only the user who created the troll can delete it
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('Req.params: ', req.params.id);
+
+  const sqlQuery = `
+    DELETE FROM "troll"
+    WHERE "troll_id" = $1;
+    `;
+  pool.query(sqlQuery, [req.params.id])
+  .then((response) => {
+    console.log('NAILED IT!!!!!', response.body);
+    res.sendStatus(200);
+  })
+  .catch((error) => {
+    console.log('Error: ', error);
+    res.sendStatus(500);
+  })
+
+
+  // endpoint functionality
+});
+
   module.exports = router;
   
