@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import RollPage from '../RollPage/RollPage.jsx'
+import TrollDetails from '../TrollDetails/TrollDetails'
 
 import './App.css';
 
@@ -67,6 +68,13 @@ function App() {
             path="/gallery"
           >
             <GalleryPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+          exact
+          path="/details/:id" 
+          >
+            <TrollDetails />
           </ProtectedRoute>
 
           <ProtectedRoute

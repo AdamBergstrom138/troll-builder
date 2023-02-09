@@ -16,8 +16,29 @@ function* fetchTrolls() {
   }
 }
 
+function* fetchTrollDetails(action) {
+  console.log('in fetchTrollDetails', action.payload);
+  try {
+      const id = action.payload
+
+      const trollDetails = yield axios({
+        method: 'GET',
+        url: `/api/troll/${id}`,
+      })
+      yield put ({
+        type: 'SET_TROLLDETAILS',
+        payload: trollDetails.data
+      }) 
+      console.log('trollDetails', trollDetails);
+  } catch(error){   // add error? and log it
+      console.log('fetch Troll Details error', error);
+  }
+      
+}
+
 function* trollSaga() {
   yield takeLatest('FETCH_TROLLS', fetchTrolls);
+  yield takeLatest('FETCH_TROLLDETAILS', fetchTrollDetails)
 }
 
 export default trollSaga;

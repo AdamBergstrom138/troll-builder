@@ -3,11 +3,12 @@ import { useDispatch } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
+import { useHistory } from 'react-router-dom';
 
 function UserPage() {
   const dispatch = useDispatch();
   const store = useReduxStore();
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
+  const history = useHistory();
   const user = useSelector((store) => store.user);
   console.log('user', user);
   const trolls = useSelector((store) => store.troll);
@@ -18,12 +19,13 @@ function UserPage() {
         dispatch({ type: 'FETCH_TROLLS' });
     }, []);
 
-    const handleClick = (data) => {
+    const handleClick = (troll) => {
       
-      console.log('troll clicked', data);
-      let troll = data.id;
+      console.log('troll clicked', troll.troll_id);
+      let trollId = troll.troll_id;
+      console.log(trollId);
 
-      // history.push(`/details/${movieId}`)
+      history.push(`/details/${trollId}`)
 }
 
   return (
