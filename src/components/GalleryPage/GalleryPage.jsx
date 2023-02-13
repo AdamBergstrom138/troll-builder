@@ -5,7 +5,10 @@ import {useSelector} from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 import { useHistory } from 'react-router-dom';
 import LikeButton from '../LikeButton/LikeButton';
+// script.js
+import "nes.css/css/nes.min.css";
 import './GalleryPage.css'
+
 
 // This is one of our simplest components
 // It doesn't have local state
