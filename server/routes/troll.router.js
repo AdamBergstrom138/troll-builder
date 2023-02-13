@@ -90,12 +90,15 @@ router.post('/', (req, res) => {
   const queryText = `
   INSERT INTO "troll" ("name", "description", "element", "head", "body", "accessory", "background", "user_id", "image", "likes")
   VALUES 
-    ($1, $2, 'fire', 'head2', 'body2', 'none', 'none', $3, 'imgs/test2.png', '0');
+    ($1, $2, $3, $4, $5, 'none', 'none', $6, 'imgs/test2.png', '0');
   
     `;
   const queryValues = [
     newTroll.name,
     newTroll.description,
+    newTroll.element,
+    newTroll.head,
+    newTroll.body,
     Number(newTroll.userid)
   ];
   pool.query(queryText, queryValues)
