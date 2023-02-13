@@ -13,7 +13,7 @@ router.get('/all', rejectUnauthenticated, (req, res) => {
   FROM "troll"
   JOIN "user"
   ON "user"."id" = "troll"."user_id"
-  ORDER BY "created" DESC;
+  ORDER BY "likes" DESC;
   `
   // const sqlValues = [id];
   pool.query(sqlQuery)
@@ -122,7 +122,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   .then((response) => {
     console.log('NAILED IT!!!!! Delete Complete', response.body);
     res.sendStatus(200);
-    
+
   })
   .catch((error) => {
     console.log('Error: ', error);

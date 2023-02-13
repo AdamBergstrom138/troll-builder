@@ -42,13 +42,14 @@ function TrollDetails() {
             <div>
             {trollDetails.map((troll, index) => {
                 return (
-                    <div className='detailsBox' key={index}>
+                    <div className='detailsBox' key={troll.troll_id}>
                         <h2>Name: {troll.name}</h2>
                         <img src={troll.image}/>
                         <h3>Description: {troll.description}</h3>
                         <h4>Born: {troll.created}</h4> 
                         <h4>Element: {troll.element}</h4>
-                        <div><LikeButton troll={troll} /></div>
+                        <h4>Likes: {troll.likes}</h4>
+                        {/* <div><LikeButton troll={troll} /></div> */}
                         <div><DeleteButton troll={troll} /></div>
                     </div>
                 )

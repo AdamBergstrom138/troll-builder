@@ -9,8 +9,9 @@ function LikeButton ({ troll }) {
 
     const handleLike = (event) => {
         event.preventDefault();
-        const trollId = params.id;
-        // console.log('trollId', trollId)
+        // const trollId = params.id;
+        const trollId = troll.troll_id
+        console.log('trollId of troll clicked like', trollId)
         console.log('clicked like', troll.troll_id);
         dispatch({ 
             type: 'ADD_LIKE',
@@ -48,29 +49,6 @@ function LikeButton ({ troll }) {
     //         console.log(err);
     //     })
     // }
-
-    // henris code
-    // router.put('/:id', (req,res) => {
-    //     console.log('In PUT route');
-    //     console.log('req.params: ', req.params.id);
-    //     // console.log('req.body: ', req.body);
-        
-    //     let sqlQuery = 
-    //         `UPDATE "list"
-    //             SET "likes" = "likes" + 1
-    //             WHERE "id"=$1;`;
-    //     let sqlValues = [req.params.id];
-    //     pool.query(sqlQuery, sqlValues)
-    //     .then((response) => {
-    //         console.log('Success in PUT');
-    //         res.sendStatus(200);
-    //     })
-    //     .catch((error) => {
-    //         console.log('Error in PUT: ', error)
-    //         res.sendStatus(500);
-    //     })
-    // })
-
     return ( 
   <>
         <button type="button" onClick={handleLike}>

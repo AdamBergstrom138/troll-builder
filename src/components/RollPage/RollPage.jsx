@@ -15,11 +15,11 @@ function RollPage() {
   const random = () => {
     let element = Math.floor(Math.random() * 3);
     if(element === 0){
-      element = 'fire';
+      element = 'Fire';
     } else if (element === 1){
-      element = 'swamp';
+      element = 'Swamp';
     } else if (element === 2){
-      element = 'earth'
+      element = 'Forest'
     }
     let head = Math.floor(Math.random() * 3);
     if(head === 0){
@@ -64,23 +64,23 @@ function RollPage() {
     goToNewTroll();
 }
 
-  const addNewTroll = (event) => {
-    event.preventDefault();
-    console.log('in addNewTroll')
-    let newTroll = {
-      name: nameInput,
-      description: descriptionInput,
-      userid: user.id
-    }
+//   const addNewTroll = (event) => {
+//     event.preventDefault();
+//     console.log('in addNewTroll')
+//     let newTroll = {
+//       name: nameInput,
+//       description: descriptionInput,
+//       userid: user.id
+//     }
     
-    // Yell at a Saga function to send the new troll
-    // data to our server:
-    dispatch({
-      type: 'ADD_TROLL',
-      payload: newTroll
-    })
-    clearTrollForm();
-}
+//     // Yell at a Saga function to send the new troll
+//     // data to our server:
+//     dispatch({
+//       type: 'ADD_TROLL',
+//       payload: newTroll
+//     })
+//     clearTrollForm();
+// }
 
 const clearTrollForm = () => {
   setNameInput('');
@@ -95,7 +95,7 @@ const goToNewTroll = () => {
       <h1>Troll Builder Roll-A-Troll page</h1>
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
-      <form onSubmit={addNewTroll}>
+      <form >
         <input
           type='text'
           placeholder="Name"
@@ -106,7 +106,6 @@ const goToNewTroll = () => {
           placeholder="Description"
           value={descriptionInput}
           onChange={(evt) => setDescriptionInput(evt.target.value)} />
-        <button>Submit</button>
       </form>
       <button onClick={(event) => random()}>random</button>
     </div>

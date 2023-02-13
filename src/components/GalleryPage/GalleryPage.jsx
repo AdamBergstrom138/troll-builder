@@ -4,6 +4,8 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 import { useHistory } from 'react-router-dom';
+import LikeButton from '../LikeButton/LikeButton';
+import './GalleryPage.css'
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -31,9 +33,12 @@ function GalleryPage() {
             <section className="trolls">
                 {alltrolls.map((troll) => {
                     return (
-                        <div className='trollBox' key={troll.id} >
+                        <div className='trollBox' key={troll.troll_id} >
                             <h3>{troll.name}</h3>
                             <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/>
+                            <h4>{troll.Description}</h4>
+                            <h5>Born on:{troll.created}</h5>
+                            <div><LikeButton troll={troll} /></div>
                         </div>
                     );
                 })}

@@ -54,8 +54,9 @@ function* addLike(action) {
       data: id
     })
     yield put({
-      type: 'FETCH_TROLLDETAILS',
-      payload: id
+      // type: 'FETCH_TROLLDETAILS',
+      type: 'FETCH_ALL_TROLLS',
+      payload: id,
     })
   } 
 
