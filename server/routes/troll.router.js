@@ -90,7 +90,7 @@ router.post('/', (req, res) => {
   const queryText = `
   INSERT INTO "troll" ("name", "description", "element", "head", "body", "accessory", "background", "user_id", "image", "likes")
   VALUES 
-    ($1, $2, $3, $4, $5, 'none', 'none', $6, 'imgs/test2.png', '0');
+    ($1, $2, $3, $4, $5, 'none', 'none', $6, $7, '0');
   
     `;
   const queryValues = [
@@ -99,7 +99,8 @@ router.post('/', (req, res) => {
     newTroll.element,
     newTroll.head,
     newTroll.body,
-    Number(newTroll.userid)
+    Number(newTroll.userid),
+    newTroll.image
   ];
   pool.query(queryText, queryValues)
     .then(() => { res.sendStatus(201); })
@@ -119,8 +120,9 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
     `;
   pool.query(sqlQuery, [req.params.id])
   .then((response) => {
-    console.log('NAILED IT!!!!!', response.body);
+    console.log('NAILED IT!!!!! Delete Complete', response.body);
     res.sendStatus(200);
+    
   })
   .catch((error) => {
     console.log('Error: ', error);

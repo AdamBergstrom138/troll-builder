@@ -1,9 +1,11 @@
 import React, {useState}from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 //🧌 
 function RollPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
     
   const [nameInput, setNameInput] = useState('');
   const [descriptionInput, setDescriptionInput] = useState('');
@@ -48,7 +50,8 @@ function RollPage() {
       element: element,
       head: head,
       body: body,
-      userid: user.id
+      userid: user.id,
+      image:`${element}${head}${body}.png`
     }
     
     // Yell at a Saga function to send the new troll
@@ -58,6 +61,7 @@ function RollPage() {
       payload: newTroll
     })
     clearTrollForm();
+    goToNewTroll();
 }
 
   const addNewTroll = (event) => {
@@ -82,7 +86,9 @@ const clearTrollForm = () => {
   setNameInput('');
   setDescriptionInput('');
 }
-
+const goToNewTroll = () => {
+  history.push(`/`)
+}
 
   return (
     <div className="container">

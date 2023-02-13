@@ -6,17 +6,23 @@ import { useHistory, useParams } from 'react-router-dom';
 function DeleteButton ({ troll }) {
     const dispatch = useDispatch();
     const params = useParams();
+    const history = useHistory();
 
     const handleDelete = (event) => {
         event.preventDefault();
         const trollId = params.id;
-        // console.log('trollId', trollId)
-        console.log('clicked delete', trollId);
+
+        console.log('*******clicked delete*********', trollId);
         dispatch({
             type: 'DELETE_TROLL',
             payload: trollId
           })
+        handleBackClick();
     }
+    const handleBackClick = () => {
+
+        history.push('/')
+}
 
     return ( 
         <>
