@@ -7,6 +7,7 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+  background-color: #703cdf;
 }
 
 img {
@@ -29,10 +30,10 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #000000;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
+  background-color: #ea5034;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -55,7 +56,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #851313;
   text-decoration: none;
 }
 
@@ -72,8 +73,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #389c21;
+  color: #389c21;
 }
 
 /* --------------------------------------------------------------------------------

@@ -36,7 +36,7 @@ function GalleryPage() {
                         <div className='trollBox' key={troll.troll_id} >
                             <h3>{troll.name}</h3>
                             <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/>
-                            <h4>{troll.Description}</h4>
+                            <h4>{troll.description}</h4>
                             <h5>Born on:{troll.created}</h5>
                             <div><LikeButton troll={troll} /></div>
                         </div>

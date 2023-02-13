@@ -2,6 +2,7 @@ import React, {useState}from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+
 //🧌 
 function RollPage() {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function RollPage() {
   const [descriptionInput, setDescriptionInput] = useState('');
 
   const user = useSelector((store) => store.user);
+  const trolls = useSelector((store) => store.troll);
 
   const random = () => {
     let element = Math.floor(Math.random() * 3);
@@ -92,9 +94,11 @@ const goToNewTroll = () => {
 
   return (
     <div className="container">
-      <h1>Troll Builder Roll-A-Troll page</h1>
-      <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      <h1>Roll-A-Troll! {user.username}!</h1>
+      <img src="imgs/test.gif" alt="laughing troll" width="512" height="512" ></img>
+      {/* <h2>{user.username}!</h2> */}
+      {/* <p>Your ID is: {user.id}</p> */}
+      <h3>Enter a Name and Description of your troll!</h3>
       <form >
         <input
           type='text'
