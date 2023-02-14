@@ -39,7 +39,7 @@ function UserPage() {
             <section className="trolls">
                 {trolls.map((troll) => {
                     return (
-                        <div className='trollBox' key={troll.troll_id} >
+                        <div className='trollBox nes-pointer' key={troll.troll_id} >
                             <h3>{troll.name}</h3>
                             <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/>
                         </div>
