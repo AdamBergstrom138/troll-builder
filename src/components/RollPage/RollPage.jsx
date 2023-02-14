@@ -17,11 +17,11 @@ function RollPage() {
   const random = () => {
     let element = Math.floor(Math.random() * 3);
     if(element === 0){
-      element = 'Fire';
+      element = 'fire';
     } else if (element === 1){
-      element = 'Swamp';
+      element = 'swamp';
     } else if (element === 2){
-      element = 'Forest'
+      element = 'forest'
     }
     let head = Math.floor(Math.random() * 3);
     if(head === 0){
@@ -53,7 +53,7 @@ function RollPage() {
       head: head,
       body: body,
       userid: user.id,
-      image:`${element}${head}${body}.png`
+      image:`imgs/${element}${head}${body}.png`
     }
     
     // Yell at a Saga function to send the new troll

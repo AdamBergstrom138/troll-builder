@@ -11,6 +11,8 @@ function TrollDetails() {
     const history = useHistory();
     const params = useParams();
     const trollDetails = useSelector(store => store.trollDetails)
+    // reformatting date 
+
     // const likes = useSelector(store => store.likes)
 
     console.log("Troll details in Details:", trollDetails);
@@ -28,7 +30,7 @@ function TrollDetails() {
         //     payload: trollId
         // });
 
-        
+      
     }, []);
     // back button
     const handleBackClick = () => {
@@ -45,8 +47,9 @@ function TrollDetails() {
                     <div className='detailsBox' key={troll.troll_id}>
                         <h2>Name: {troll.name}</h2>
                         <img src={troll.image}/>
+                        <h3>Created by: {troll.username}</h3>
                         <h3>Description: {troll.description}</h3>
-                        <h4>Born: {troll.created}</h4> 
+                        <h4>Born: {new Date(troll.created).toLocaleDateString()}</h4> 
                         <h4>Element: {troll.element}</h4>
                         <h4>Likes: {troll.likes}</h4>
                         {/* <div><LikeButton troll={troll} /></div> */}

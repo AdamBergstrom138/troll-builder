@@ -38,9 +38,11 @@ function GalleryPage() {
                     return (
                         <div className='trollBox' key={troll.troll_id} >
                             <h3>{troll.name}</h3>
-                            <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/>
+                            <img src={troll.image} alt={troll.name} />
+                            {/* <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/> */}
+                            <h4>Created by: {troll.username}</h4>
                             <h4>{troll.description}</h4>
-                            <h5>Born on:{troll.created}</h5>
+                            <h5>Born on:{new Date(troll.created).toLocaleDateString()}</h5>
                             <div><LikeButton troll={troll} /></div>
                         </div>
                     );
