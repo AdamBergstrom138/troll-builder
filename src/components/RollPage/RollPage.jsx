@@ -2,6 +2,7 @@ import React, {useState}from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import './RollPage.css'
 
 //🧌 
 function RollPage() {
@@ -95,9 +96,22 @@ const goToNewTroll = () => {
   return (
     <div className="container">
       <h1>Roll-A-Troll! {user.username}!</h1>
-      <img src="imgs/test.gif" alt="laughing troll" width="512" height="512" ></img>
+
+      {/* <img src="imgs/test.gif" alt="laughing troll" width="512" height="512" ></img> */}
       {/* <h2>{user.username}!</h2> */}
       {/* <p>Your ID is: {user.id}</p> */}
+      <div className='troll'></div>
+      {/* <section className="nes-container"> */}
+  <section className="message-list">
+    
+    <section className="message -left">
+      {/* <i className="nes-bcrikko"></i> */}
+      <div className="nes-balloon from-left">
+        <p>Roll a Troll!</p>
+      </div>
+    </section>
+    </section>
+    {/* </section> */}
       <h3>Enter a Name and Description of your troll!</h3>
       <form >
         <input
