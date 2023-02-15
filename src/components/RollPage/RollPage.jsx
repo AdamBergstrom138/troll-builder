@@ -95,24 +95,25 @@ const goToNewTroll = () => {
 
   return (
     <div className="container">
-      <h1>Roll-A-Troll! {user.username}!</h1>
+      <h1>Create a New Troll! {user.username}!</h1>
 
       {/* <img src="imgs/test.gif" alt="laughing troll" width="512" height="512" ></img> */}
       {/* <h2>{user.username}!</h2> */}
       {/* <p>Your ID is: {user.id}</p> */}
       <div className='troll'></div>
       {/* <section className="nes-container"> */}
-  <section className="message-list">
+    <section className="message-list">
     
     <section className="message -left">
       {/* <i className="nes-bcrikko"></i> */}
       <div className="nes-balloon from-left">
-        <p>Roll a Troll!</p>
+        <p>Generate a Troll!</p>
       </div>
     </section>
     </section>
     {/* </section> */}
-      <h3>Enter a Name and Description of your troll!</h3>
+      <div className='wheel'></div>
+      <h3>Enter a Name and Description for your new Troll!</h3>
       <form >
         <input
           type='text'
@@ -125,7 +126,7 @@ const goToNewTroll = () => {
           value={descriptionInput}
           onChange={(evt) => setDescriptionInput(evt.target.value)} />
       </form>
-      <button onClick={(event) => random()}>random</button>
+      <button onClick={(event) => random()}>Generate</button>
     </div>
   );
 }

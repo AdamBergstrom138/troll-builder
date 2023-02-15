@@ -29,11 +29,11 @@ function Nav() {
             </Link>
 
             <Link className="navLink" to="/gallery">
-              Gallery Page
+              Gallery
             </Link>
 
             <Link className="navLink" to="/roll">
-              Roll-A-Troll Page
+              Generate
             </Link>
 
             <LogOutButton className="navLink" />

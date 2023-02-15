@@ -8,6 +8,14 @@
     100% { background-position: -896px; }
  }
 
+ /* .wheel {
+    width: 256px;
+    height: 256px;
+    background: url('../../../public/imgs/wheel_sprite.png') center;
+    animation: play 0.8s steps(4) infinite;
+ } */
+
+
  .message {
     margin-left: 128px;
     margin-top: -128px;
