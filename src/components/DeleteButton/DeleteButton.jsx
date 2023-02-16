@@ -26,7 +26,7 @@ function DeleteButton ({ troll }) {
 
     return ( 
         <>
-        <button type="button" onClick={handleDelete}>
+        <button type="button" className="nes-btn is-error" onClick={handleDelete}>
             Delete
         </button>
         </>

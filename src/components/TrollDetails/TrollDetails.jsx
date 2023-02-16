@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import LikeButton from '../LikeButton/LikeButton';
 import DeleteButton from '../DeleteButton/DeleteButton';
+import './TrollDetails.css';
 
 
 function TrollDetails() {
@@ -40,7 +41,9 @@ function TrollDetails() {
 
     return (
         <main>
+            <div className='detailsHeader'>
             <h1>Details</h1>
+            </div>
             <div>
             {trollDetails.map((troll, index) => {
                 return (
@@ -59,8 +62,8 @@ function TrollDetails() {
             })}
             </div>
             
-            <section className="Details">
-                <button onClick={handleBackClick}>Back</button>
+            <section className="backButton">
+                <button className="nes-btn" onClick={handleBackClick}>Back</button>
             </section>
         </main>
 
