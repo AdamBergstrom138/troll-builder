@@ -5,7 +5,10 @@ import {useSelector} from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 import { useHistory } from 'react-router-dom';
 import LikeButton from '../LikeButton/LikeButton';
+// script.js
+import "nes.css/css/nes.min.css";
 import './GalleryPage.css'
+
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -29,15 +32,17 @@ function GalleryPage() {
   return (
     <div className="container">
       <h1>Gallery Page</h1>
-      <h1>Trolls</h1>
+      <h2>Trolls</h2>
             <section className="trolls">
                 {alltrolls.map((troll) => {
                     return (
                         <div className='trollBox' key={troll.troll_id} >
                             <h3>{troll.name}</h3>
-                            <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/>
+                            <img src={troll.image} alt={troll.name} />
+                            {/* <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/> */}
+                            <h4>Created by: {troll.username}</h4>
                             <h4>{troll.description}</h4>
-                            <h5>Born on:{troll.created}</h5>
+                            <h5>Born on:{new Date(troll.created).toLocaleDateString()}</h5>
                             <div><LikeButton troll={troll} /></div>
                         </div>
                     );

@@ -51,7 +51,7 @@ function LikeButton ({ troll }) {
     // }
     return ( 
   <>
-        <button type="button" onClick={handleLike}>
+        <button type="button" className="nes-btn" onClick={handleLike}>
             Like
         </button>
          <div>

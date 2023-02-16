@@ -5,9 +5,11 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   margin: 0px;
   background-color: #703cdf;
+  /* text-align: center; */
+  color: #000000;
 }
 
 img {

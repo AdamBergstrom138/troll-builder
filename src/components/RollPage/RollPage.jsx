@@ -2,6 +2,7 @@ import React, {useState}from 'react';
 import { useDispatch } from 'react-redux';
 import {useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
+import './RollPage.css'
 
 //🧌 
 function RollPage() {
@@ -17,11 +18,11 @@ function RollPage() {
   const random = () => {
     let element = Math.floor(Math.random() * 3);
     if(element === 0){
-      element = 'Fire';
+      element = 'fire';
     } else if (element === 1){
-      element = 'Swamp';
+      element = 'swamp';
     } else if (element === 2){
-      element = 'Forest'
+      element = 'forest'
     }
     let head = Math.floor(Math.random() * 3);
     if(head === 0){
@@ -53,7 +54,7 @@ function RollPage() {
       head: head,
       body: body,
       userid: user.id,
-      image:`${element}${head}${body}.png`
+      image:`imgs/${element}${head}${body}.png`
     }
     
     // Yell at a Saga function to send the new troll
@@ -94,11 +95,25 @@ const goToNewTroll = () => {
 
   return (
     <div className="container">
-      <h1>Roll-A-Troll! {user.username}!</h1>
-      <img src="imgs/test.gif" alt="laughing troll" width="512" height="512" ></img>
+      <h1>Create a New Troll! {user.username}!</h1>
+
+      {/* <img src="imgs/test.gif" alt="laughing troll" width="512" height="512" ></img> */}
       {/* <h2>{user.username}!</h2> */}
       {/* <p>Your ID is: {user.id}</p> */}
-      <h3>Enter a Name and Description of your troll!</h3>
+      <div className='troll'></div>
+      {/* <section className="nes-container"> */}
+    <section className="message-list">
+    
+    <section className="message -left">
+      {/* <i className="nes-bcrikko"></i> */}
+      <div className="nes-balloon from-left">
+        <p>Generate a Troll!</p>
+      </div>
+    </section>
+    </section>
+    {/* </section> */}
+      <div className='wheel'></div>
+      <h3>Enter a Name and Description for your new Troll!</h3>
       <form >
         <input
           type='text'
@@ -111,7 +126,7 @@ const goToNewTroll = () => {
           value={descriptionInput}
           onChange={(evt) => setDescriptionInput(evt.target.value)} />
       </form>
-      <button onClick={(event) => random()}>random</button>
+      <button onClick={(event) => random()}>Generate</button>
     </div>
   );
 }
