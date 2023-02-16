@@ -32,7 +32,7 @@ function GalleryPage() {
   return (
     <div className="container">
       <h1>Gallery Page</h1>
-      <h1>Trolls</h1>
+      <h2>Trolls</h2>
             <section className="trolls">
                 {alltrolls.map((troll) => {
                     return (

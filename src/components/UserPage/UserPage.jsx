@@ -33,7 +33,7 @@ function UserPage() {
     <div className="container">
       <h1>Troll Builder User Page</h1>
       <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
+      {/* <p>Your ID is: {user.id}</p> */}
       <LogOutButton className="btn" />
       <h1>Trolls</h1>
             <section className="trolls">
