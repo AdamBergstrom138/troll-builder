@@ -5,15 +5,8 @@ import {useSelector} from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 import { useHistory } from 'react-router-dom';
 import LikeButton from '../LikeButton/LikeButton';
-// script.js
 import "nes.css/css/nes.min.css";
 import './GalleryPage.css'
-
-
-// This is one of our simplest components
-// It doesn't have local state
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is
 
 function GalleryPage() {
   const dispatch = useDispatch();
@@ -40,8 +33,8 @@ function GalleryPage() {
                             <h3>{troll.name}</h3>
                             <img src={troll.image} alt={troll.name} />
                             {/* <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/> */}
-                            <h4>Created by: {troll.username}</h4>
                             <h4>{troll.description}</h4>
+                            <h4>Created by: {troll.username}</h4>
                             <h5>Born on:{new Date(troll.created).toLocaleDateString()}</h5>
                             <div><LikeButton troll={troll} /></div>
                         </div>
