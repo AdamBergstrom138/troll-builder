@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+// import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
-import useReduxStore from '../../hooks/useReduxStore';
-import { useHistory } from 'react-router-dom';
+// import useReduxStore from '../../hooks/useReduxStore';
+// import { useHistory } from 'react-router-dom';
 import LikeButton from '../LikeButton/LikeButton';
 import "nes.css/css/nes.min.css";
 import './GalleryPage.css'
 
 function GalleryPage() {
   const dispatch = useDispatch();
-  const store = useReduxStore();
-  const history = useHistory();
+  // const store = useReduxStore();
+  // const history = useHistory();
 
   const alltrolls = useSelector((store) => store.alltrolls);
 

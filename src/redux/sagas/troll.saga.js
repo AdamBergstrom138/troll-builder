@@ -69,7 +69,7 @@ function* addLike(action) {
                                       // something like:
                                       // { name: 'Thing', kingdom: 'Other Thing', ...}
       // POST the new plant object to the server:
-      const response = yield axios({
+      yield axios({
         method: 'POST',
         url: '/api/troll',
         data: newTroll

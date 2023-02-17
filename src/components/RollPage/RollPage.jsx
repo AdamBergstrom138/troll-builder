@@ -14,7 +14,8 @@ function RollPage() {
 
   const user = useSelector((store) => store.user);
   const trolls = useSelector((store) => store.troll);
-
+// random function will randomize the attributes of the new troll
+// 3 different element, head, and body types
   const random = () => {
     let element = Math.floor(Math.random() * 3);
     if(element === 0){
@@ -40,13 +41,12 @@ function RollPage() {
     } else if (body === 2){
       body = 'body3'
     }
-
     console.log('element:', element, 'head:', head, 'body:', body);
     addNewTroll2(element, head, body);
   }
 
   const addNewTroll2 = (element, head, body) => {
-    console.log('in addNewTroll')
+    // console.log('in addNewTroll')
     let newTroll = {
       name: nameInput,
       description: descriptionInput,
@@ -56,7 +56,6 @@ function RollPage() {
       userid: user.id,
       image:`imgs/${element}${head}${body}.png`
     }
-    
     // Yell at a Saga function to send the new troll
     // data to our server:
     dispatch({
@@ -66,25 +65,7 @@ function RollPage() {
     clearTrollForm();
     goToNewTroll();
 }
-
-//   const addNewTroll = (event) => {
-//     event.preventDefault();
-//     console.log('in addNewTroll')
-//     let newTroll = {
-//       name: nameInput,
-//       description: descriptionInput,
-//       userid: user.id
-//     }
-    
-//     // Yell at a Saga function to send the new troll
-//     // data to our server:
-//     dispatch({
-//       type: 'ADD_TROLL',
-//       payload: newTroll
-//     })
-//     clearTrollForm();
-// }
-
+// clearTrollForm clears the input fields
 const clearTrollForm = () => {
   setNameInput('');
   setDescriptionInput('');
@@ -92,27 +73,19 @@ const clearTrollForm = () => {
 const goToNewTroll = () => {
   history.push(`/`)
 }
-
   return (
     <div className="container">
       <h1>Create a New Troll! {user.username}!</h1>
-
-      {/* <img src="imgs/test.gif" alt="laughing troll" width="512" height="512" ></img> */}
-      {/* <h2>{user.username}!</h2> */}
-      {/* <p>Your ID is: {user.id}</p> */}
+      {/* 'troll' is for css animation */}
       <div className='troll'></div>
-      {/* <section className="nes-container"> */}
-    <section className="message-list">
-    
-    <section className="message -left">
-      {/* <i className="nes-bcrikko"></i> */}
-      <div className="nes-balloon from-left">
-        <p>Generate a Troll!</p>
-      </div>
-    </section>
-    </section>
-    {/* </section> */}
-      <div className='wheel'></div>
+      {/* next 7 lines are for the word bubble in css */}
+      <section className="message-list">
+        <section className="message -left">
+          <div className="nes-balloon from-left">
+            <p>Generate a Troll!</p>
+          </div>
+        </section>
+      </section>
       <h3>Enter a Name and Description for your new Troll!</h3>
       <form >
         <input

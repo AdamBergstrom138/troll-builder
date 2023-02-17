@@ -7,14 +7,16 @@
 @keyframes play {
     100% { background-position: -896px; }
  }
-
- /* .wheel {
+/* try different components */
+  /* .wheel {
     width: 256px;
     height: 256px;
     background: url('../../../public/imgs/wheel_sprite.png') center;
     animation: play 0.8s steps(4) infinite;
+ } 
+ @keyframes play {
+   100% { background-position: -1024px; }
  } */
-
 
  .message {
     margin-left: 128px;

@@ -32,6 +32,7 @@ function UserPage() {
   return (
     <div className="container">
       <h1>Troll Generator User Page</h1>
+      
       <h2>Welcome, {user.username}!</h2>
       {/* <p>Your ID is: {user.id}</p> */}
       <LogOutButton className="btn" />

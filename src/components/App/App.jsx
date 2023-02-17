@@ -63,7 +63,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows GalleryPagee else shows LoginPage
+            // logged in shows GalleryPage else shows LoginPage
             exact
             path="/gallery"
           >
