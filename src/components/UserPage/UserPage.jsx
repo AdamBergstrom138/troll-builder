@@ -35,7 +35,7 @@ function UserPage() {
       
       <h2>Welcome, {user.username}!</h2>
       {/* <p>Your ID is: {user.id}</p> */}
-      <LogOutButton className="btn" />
+      {/* <LogOutButton className="btn" /> */}
       <h1>Trolls</h1>
             <section className="trolls">
                 {trolls.map((troll) => {

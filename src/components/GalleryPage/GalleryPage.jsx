@@ -35,6 +35,7 @@ function GalleryPage() {
                             {/* <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/> */}
                             <h4>{troll.description}</h4>
                             <h4>Created by: {troll.username}</h4>
+                            <h5>Element Type: {troll.element}</h5>
                             <h5>Born on:{new Date(troll.created).toLocaleDateString()}</h5>
                             <div><LikeButton troll={troll} /></div>
                         </div>
