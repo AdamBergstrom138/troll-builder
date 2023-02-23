@@ -35,7 +35,7 @@ function GalleryDetails() {
     // back button
     const handleBackClick = () => {
 
-        history.push('/')
+        history.push('/gallery')
 }
 
     return (
