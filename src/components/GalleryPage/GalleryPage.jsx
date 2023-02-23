@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 // import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 // import useReduxStore from '../../hooks/useReduxStore';
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import LikeButton from '../LikeButton/LikeButton';
 import "nes.css/css/nes.min.css";
 import './GalleryPage.css'
@@ -11,7 +11,7 @@ import './GalleryPage.css'
 function GalleryPage() {
   const dispatch = useDispatch();
   // const store = useReduxStore();
-  // const history = useHistory();
+  const history = useHistory();
 
   const alltrolls = useSelector((store) => store.alltrolls);
 
@@ -19,6 +19,15 @@ function GalleryPage() {
   useEffect(() => {
     dispatch({ type: 'FETCH_ALL_TROLLS' });
 }, []);
+
+const handleClick = (troll) => {
+      
+  console.log('troll clicked', troll.troll_id);
+  let trollId = troll.troll_id;
+  console.log(trollId);
+
+  history.push(`/gallerydetails/${trollId}`)
+}
 
 
 
@@ -31,8 +40,8 @@ function GalleryPage() {
                     return (
                         <div className='trollBox' key={troll.troll_id} >
                             <h3>{troll.name}</h3>
-                            <img src={troll.image} alt={troll.name} />
-                            {/* <img onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/> */}
+                            {/* <img src={troll.image} alt={troll.name} /> */}
+                            <img className='nes-pointer' onClick={() => handleClick(troll)} src={troll.image} alt={troll.name}/>
                             <h4>{troll.description}</h4>
                             <h4>Created by: {troll.username}</h4>
                             <h5>Element Type: {troll.element}</h5>
