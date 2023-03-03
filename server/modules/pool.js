@@ -6,6 +6,8 @@
 */
 
 const pg = require('pg');
+
+
 let pool;
 
 // When our app is deployed to the internet 
@@ -15,7 +17,7 @@ let pool;
 //  DATABASE_URL=postgresql://jDoe354:secretPw123@some.db.com/prime_app
 if (process.env.DATABASE_URL) {
     pool = new pg.Pool({
-        connectionString: process.env.DATABASE_URL,
+        connectionString: `process.env.postgres://wxabxprvovmobe:76871c92a2aee677de3f7e7145ecbb36b3b79c08fa32768ea1a97e11abff4a47@ec2-52-203-118-49.compute-1.amazonaws.com:5432/d63ipn96cqj5tn`,
         ssl: {
             rejectUnauthorized: false
         }
