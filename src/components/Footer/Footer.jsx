@@ -8,16 +8,10 @@ import './Footer.css';
 
 function Footer() {
 
-  // const github = () => {
-  //   console.log('go to my github')
-  // }
-
   return (
   <footer>
     &copy; Adam Bergstrom   
-    {/* getting errors from this code! so i changed class to className*/}
   <a href="https://github.com/AdamBergstrom138"><i className="nes-icon github is-large"></i></a>
-
   </footer>
   )
 }

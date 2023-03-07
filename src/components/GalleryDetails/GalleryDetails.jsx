@@ -11,9 +11,6 @@ function GalleryDetails() {
     const history = useHistory();
     const params = useParams();
     const trollDetails = useSelector(store => store.trollDetails)
-    // reformatting date 
-
-    // const likes = useSelector(store => store.likes)
 
     console.log("Troll details in GalleryDetails:", trollDetails);
     // FETCH_TROLLDETAILS grabs the info for one Troll based on the ID we clicked on
@@ -25,11 +22,6 @@ function GalleryDetails() {
             type: 'FETCH_TROLLDETAILS',
             payload: trollId
         });
-        // dispatch({ 
-        //     type: 'FETCH_LIKES',
-        //     payload: trollId
-        // });
-
       
     }, []);
     // back button

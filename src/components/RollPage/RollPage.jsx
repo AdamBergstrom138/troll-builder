@@ -56,7 +56,7 @@ function RollPage() {
       userid: user.id,
       image:`imgs/${element}${head}${body}.png`
     }
-    // Yell at a Saga function to send the new troll
+    // Tell Saga function to send the new troll
     // data to our server:
     dispatch({
       type: 'ADD_TROLL',
